@@ -93,7 +93,7 @@ function startHeartAnimation() {
 	};
 })(jQuery);
 
-function timeElapse(date){
+function dealDate(date) {
 	var current = Date();
 	var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
 	var days = Math.floor(seconds / (3600 * 24));
@@ -112,20 +112,30 @@ function timeElapse(date){
 		seconds = "0" + seconds;
 	}
 	var result = "<span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
-	$("#elapseClock").html(result);
+	return result;
+}
+
+function timeElapse(date1, date2, date3){
+	var result1 = dealDate(date1)
+	var result2 = dealDate(date2)
+	var result3 = dealDate(date3)
+	
+	$("#elapseClock1").html(result1);
+	$("#elapseClock2").html(result2);
+	$("#elapseClock3").html(result3);
 }
 
 function showMessages() {
 	adjustWordsPosition();
-	$('#messages').fadeIn(5000, function() {
+	$('#messages1').fadeIn(5000, function() {
 		showLoveU();
 	});
 }
 
 function adjustWordsPosition() {
 	$('#words').css("position", "absolute");
-	$('#words').css("top", $("#garden").position().top + 195);
-	$('#words').css("left", $("#garden").position().left + 70);
+	$('#words').css("top", $("#garden").position().top + 75);
+	$('#words').css("left", $("#garden").position().left + 155);
 }
 
 function adjustCodePosition() {
